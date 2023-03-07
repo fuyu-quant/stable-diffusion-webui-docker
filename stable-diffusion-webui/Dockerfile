@@ -1,5 +1,3 @@
-# 参考
-
 # Dockerfile v1.6
 
 # https://gitlab.com/nvidia/container-images/cuda/-/blob/master/dist/11.7.1/ubuntu2204/devel/cudnn8/Dockerfile
@@ -17,7 +15,13 @@ USER user
 
 RUN pip3 install --upgrade pip
 RUN pip install torch==1.12.1
-RUN pip install --pre xformers
+# xformersについては以下のサイトを参考に選ぶ
+# https://github.com/camenduru/stable-diffusion-webui-colab/releases
+#RUN pip install --pre xformers
+# Colab T4
+#RUN pip install https://github.com/camenduru/stable-diffusion-webui-colab/releases/download/0.0.16/xformers-0.0.16+814314d.d20230118-cp38-cp38-linux_x86_64.whl
+# nvidia/cuda:11.7.1-cudnn8-devel-ubuntu22.04 T4
+RUN pip install https://github.com/camenduru/stable-diffusion-webui-colab/releases/download/0.0.16/xformers-0.0.16+814314d.d20230118-cp310-cp310-linux_x86_64.whl 
 RUN pip install --pre triton
 RUN pip install numexpr
 
